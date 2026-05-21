@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Universo Nerd Hub | The Nerd Mainframe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --neon-cyan: #00d1ff;
+            --neon-purple: #cf5cff;
+        }
+        body {
+            background-color: #0e1417;
+            color: #dde3e7;
+            overflow-x: hidden;
+        }
+        .neon-glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.3);
+            border: 1px solid rgba(0, 209, 255, 0.5);
+        }
+        .neon-glow-purple {
+            box-shadow: 0 0 15px rgba(207, 92, 255, 0.3);
+            border: 1px solid rgba(207, 92, 255, 0.5);
+        }
+        .glass-panel {
+            background: rgba(26, 33, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(133, 147, 153, 0.2);
+        }
+        .scanning-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            position: absolute;
+            animation: scan 4s linear infinite;
+            opacity: 0.3;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 209, 255, 0.1) 0%, transparent 70%);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0e1417; }
+        ::-webkit-scrollbar-thumb { background: #3c494e; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00d1ff; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#320047",
+                    "on-primary": "#003543",
+                    "surface-container-high": "#242b2e",
+                    "on-secondary": "#520071",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#dde3e7",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "surface-container": "#1a2123",
+                    "on-surface-variant": "#bbc9cf",
+                    "surface-container-highest": "#2f3639",
+                    "on-tertiary": "#680013",
+                    "on-error": "#690005",
+                    "surface-dim": "#0e1417",
+                    "on-primary-container": "#00566a",
+                    "surface-bright": "#333a3d",
+                    "on-primary-fixed": "#001f28",
+                    "primary-container": "#00d1ff",
+                    "background": "#0e1417",
+                    "tertiary-container": "#ffaaa9",
+                    "on-secondary-fixed-variant": "#74009f",
+                    "primary-fixed": "#b7eaff",
+                    "tertiary": "#ffd1d0",
+                    "on-secondary-container": "#480063",
+                    "on-tertiary-fixed": "#410008",
+                    "secondary-fixed": "#f8d8ff",
+                    "on-tertiary-container": "#a10023",
+                    "surface-variant": "#2f3639",
+                    "surface": "#0e1417",
+                    "surface-container-lowest": "#090f12",
+                    "secondary-container": "#cf5cff",
+                    "outline": "#859399",
+                    "secondary-fixed-dim": "#ecb2ff",
+                    "primary-fixed-dim": "#4cd6ff",
+                    "tertiary-fixed": "#ffdad9",
+                    "on-primary-fixed-variant": "#004e60",
+                    "primary": "#a4e6ff",
+                    "outline-variant": "#3c494e",
+                    "surface-tint": "#4cd6ff",
+                    "tertiary-fixed-dim": "#ffb3b2",
+                    "surface-container-low": "#161d1f",
+                    "secondary": "#ecb2ff",
+                    "inverse-surface": "#dde3e7",
+                    "inverse-primary": "#00677f",
+                    "inverse-on-surface": "#2b3134",
+                    "on-tertiary-fixed-variant": "#92001f",
+                    "on-background": "#dde3e7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "max-width": "1440px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "display-lg": ["Space Grotesk"],
+                    "body-md": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl dark:bg-surface/70 border-b border-outline-variant/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-max-width mx-auto">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-primary dark:text-primary drop-shadow-[0_0_8px_rgba(164,230,255,0.6)] cursor-pointer">
+                Universo Nerd Hub
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#home">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md" href="#games">Games</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md" href="#movies">Movies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md" href="#books">Books</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md" href="#news">News</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md" href="#contact">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group hidden sm:block">
+<input class="bg-surface-container-low border-b border-outline-variant text-on-surface font-label-sm px-4 py-2 focus:outline-none focus:border-primary transition-all w-48 focus:w-64" placeholder="Search Database..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-2 text-outline">search</span>
+</div>
+<button class="cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop HUD Style) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-20 xl:w-64 bg-surface-container/80 backdrop-blur-2xl dark:bg-surface-container/80 border-r border-outline-variant/20 z-40 pt-24">
+<div class="px-6 mb-12 hidden xl:block">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full border-2 border-primary overflow-hidden shadow-[0_0_10px_rgba(164,230,255,0.5)]">
+<img alt="Cyber Explorer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsgfBj7NmT0dgDBMvMCeVsqUXhQoJPHrJeFuuShcx9U6WSJf9MftupfTXV6SdYxPIo2hEyFugMFyxbAk9J1sJaSJ0V1aW2tRjPjtEcZEKQAsLkHT1TCZcrXH_GgCv9YHlpiuVslfig7q4R8GGbWJlZZL-H0FfNrDZLKGRPGtsv-r0-SN8XO5dYUBYbxQAdnK9bYS7KEcvvEJ5aIDqt_DCp9kS-LrMiEcTJvUoVPohiRCNzPxjwQRqvoiV1S0D9ZGPBtimbxdjGsZB0"/>
+</div>
+<div>
+<h3 class="font-label-sm text-primary">Cyber Explorer</h3>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Level 42 Architect</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 px-6 py-4 text-primary bg-primary/10 border-r-4 border-primary transition-all duration-300" href="#home">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm hidden xl:block">Home</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all" href="#games">
+<span class="material-symbols-outlined">sports_esports</span>
+<span class="font-label-sm text-label-sm hidden xl:block">Games</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all" href="#movies">
+<span class="material-symbols-outlined">movie</span>
+<span class="font-label-sm text-label-sm hidden xl:block">Movies</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all" href="#books">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm hidden xl:block">Books</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all" href="#news">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-sm text-label-sm hidden xl:block">News</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-variant/50 hover:text-on-surface transition-all" href="#contact">
+<span class="material-symbols-outlined">alternate_email</span>
+<span class="font-label-sm text-label-sm hidden xl:block">Contact</span>
+</a>
+</nav>
+</aside>
+<main class="lg:ml-20 xl:ml-64 pt-20">
+<!-- Section 1: Hero Section (Enter the Nerd Mainframe) -->
+<section class="relative min-h-[921px] flex items-center justify-center overflow-hidden px-margin-mobile md:px-margin-desktop py-20" id="home">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+<div class="hero-gradient absolute inset-0"></div>
+<div class="container max-w-max-width mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 text-left">
+<div class="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-label-sm mb-6 animate-pulse">
+                        MAIN FRAME INITIALIZED :: v4.0.2
+                    </div>
+<h1 class="font-display-lg text-display-lg text-white mb-6">
+                        Enter the <span class="text-primary drop-shadow-[0_0_15px_rgba(0,209,255,0.6)]">Nerd Mainframe</span>
+</h1>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-xl mb-10 leading-relaxed">
+                        Access the ultimate digital archive for the futuristic geek. From quantum computing hardware to the latest cinematic deep-dives and technomancer lore. 
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-gradient-to-r from-primary-container to-secondary-container text-on-primary font-label-sm font-bold uppercase tracking-widest hover:brightness-110 transition-all neon-glow-cyan active:scale-95">
+                            Launch Database
+                        </button>
+<button class="px-8 py-4 border border-secondary text-secondary font-label-sm font-bold uppercase tracking-widest hover:bg-secondary/10 transition-all active:scale-95">
+                            View Roadmap
+                        </button>
+</div>
+</div>
+<div class="flex-1 relative">
+<div class="relative w-full aspect-square max-w-lg mx-auto glass-panel p-4 rounded-xl neon-glow-cyan overflow-hidden group">
+<div class="scanning-line"></div>
+<img class="w-full h-full object-cover rounded-lg opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A high-tech futuristic laptop workstation illuminated by cyan and purple neon lights in a dark, tech-focused environment. The screen displays complex data streams and holographic interfaces. The scene is clean, sleek, and highly detailed, embodying a premium cyber-elegance aesthetic with subtle reflections on metallic surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdumLTInYcXOENo1d3Zw_raDppYmWNiX-w3-z5MO_6P0HS0gQezoo0XeIAVtBAIimCviEFOQeKxqoCG4Epz7gyNUNvoiIcAjnVQQW8cVG-A4VQBADH_5djDeqO4KSJiaxXZPmepAzTkTX3TBH-kEaF_MjNHuzVrFD_i_LSVsBoicmxDiUYE7Rko1FwE322cgH77QnmFbkB_vibJ6okO4q2yr2mDWUiGK-nUenGfRvj2vPnWL-H1FIqLEtx-nI3yYFGX-jwkTzjqXam"/>
+<div class="absolute inset-0 pointer-events-none border-[1px] border-primary/20 rounded-xl"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Trending Hardware (Neon Mecha & Teasers) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="games">
+<div class="max-w-max-width mx-auto">
+<div class="flex justify-between items-end mb-12 border-l-4 border-secondary pl-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-secondary">Trending Hardware &amp; Gear</h2>
+<p class="text-on-surface-variant font-label-sm mt-2">CYBERNETIC AUGMENTATIONS :: LATEST BATCH</p>
+</div>
+<a class="text-primary font-label-sm hover:underline flex items-center gap-2" href="#">
+                        View All Units <span class="material-symbols-outlined">trending_flat</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Neon Mecha Card -->
+<div class="glass-panel group cursor-pointer overflow-hidden rounded-xl transition-all hover:-translate-y-2">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A detailed closeup of a futuristic neon mecha pilot helmet, featuring glowing purple visors and intricate mechanical details. The lighting is moody with sharp highlights of magenta and electric blue, set against a dark industrial backdrop. The overall vibe is high-fidelity and sophisticated sci-fi." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1vM2N3mGtelyowmKTuy6juUhYaD5Z_xIXyu2jsDcTG2LUUOyTK0ou38kqsBDZ28WebWDO7VKPeitFsp9sxIzhRzcye-4yuHBgGuWjcjIKiCIpV-f33xUhWQNJX6LPIX5QzwNCd78pNZGG5oHat3cMCUjWA_99prCyDENTLWBmwBn5eHZGWnwJA56M2ydpQx2J8AqRsOCGTKbfbmTDRLKrZK4x-Mi6q03icnGshXTW6uN5OvD541izwUbVU8CI1jEnZXlcDPW78qAg"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-secondary text-on-secondary font-label-sm rounded-full">LEGENDARY</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-lg text-2xl text-white mb-2">XV-700 Neon Mecha</h3>
+<p class="text-on-surface-variant font-body-md mb-4 line-clamp-2">Full-sync haptic feedback system with neural-link integration for the modern street samurai.</p>
+<div class="flex justify-between items-center border-t border-outline-variant/30 pt-4">
+<span class="text-secondary font-bold font-label-sm">45,000 CREDITS</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">shopping_cart</span>
+</div>
+</div>
+</div>
+<!-- Galactic Drift Card -->
+<div class="glass-panel group cursor-pointer overflow-hidden rounded-xl transition-all hover:-translate-y-2 lg:col-span-2">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An expansive cinematic shot of a starship drifting through a nebula with vibrant cyan and violet gases. The ship is illuminated by the glow of the nebula, showing high-tech textures and glowing thrusters. The atmosphere is quiet, majestic, and evocative of a deep-space adventure in a polished sci-fi setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgq3r39tG7B2eCGq_N8jnr8gmbjq4F-DpqZVoYzIHMzNJPB1sqTQu0029BksplNQhO_-OdDPmI6VgMEcx18JKVYgZBzyLKLvrYC1EVf2Kq_wn1VEfjWk6d0I_8s9w_CmWOrFzAV4ldP3gKT-1W2Q6EHyGFvUir9KD2d_eBeu5zQFadQWmorHILfy3WEg5r-VjvrBvyYfz3MFy0WcdADLEnYo9GZXC5KaUoFE634sYj5Bg-pvMXSoPLnuat1cYzL235P-nnmAYI1LE8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<span class="px-3 py-1 bg-primary text-on-primary font-label-sm rounded mb-3 inline-block">MOVIE TEASER</span>
+<h3 class="font-headline-lg text-headline-lg text-white mb-1">Galactic Drift: Origin</h3>
+<p class="text-on-surface-variant font-body-md">Pre-order the Collector's Edition Hardware Bundle.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Movies Section (Beyond the Event Horizon) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop relative overflow-hidden" id="movies">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent -z-10"></div>
+<div class="max-w-max-width mx-auto">
+<div class="mb-16">
+<h2 class="font-display-lg text-4xl text-white mb-4">Beyond the <span class="text-primary">Event Horizon</span></h2>
+<p class="text-on-surface-variant max-w-2xl">Streaming the future of cinematic storytelling. High-fidelity visuals meet profound philosophical narratives.</p>
+</div>
+<!-- Featured Feature -->
+<div class="relative w-full aspect-[21/9] rounded-2xl overflow-hidden mb-16 neon-glow-cyan">
+<img class="w-full h-full object-cover" data-alt="A wide cinematic landscape of a futuristic orbital station hovering above a planet. The lighting features a cool blue color palette with highlights of bright cyan from the station's energy cores. The image is crisp, detailed, and emphasizes the scale and technological advancement of the future, perfectly aligning with a cyber-elegant design style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC43BDx70n1RB67kn4VCxt1xki5CYb86ozzEryGTuuAfdMXUePTYUjo0ozzYoIEiAcXfrdAVZ1ktSlR75KAGjuCaRx35YuO0_3LQBsopUiaTzfrfVr4tXfbi3CawReGzcTteiGXk4c42zhWQtlj_6mi6dt_9Ew4xCLKo0LRR2FNMTt6nGfhuZ_i3_kheF34C8QEMb6dYbSn-u5Mi8aIFUUrKUwylAJGuuka82roCDJ8MNMVsC66mw-09V-AoI553F5F_mZYdyB4wPGC"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent flex items-center p-12">
+<div class="max-w-lg">
+<span class="text-primary font-label-sm tracking-widest uppercase mb-4 block">PREMIERE OF THE MONTH</span>
+<h3 class="font-display-lg text-display-lg text-white mb-6">DYSTOPIA UNBOUND</h3>
+<p class="text-on-surface-variant font-body-md mb-8">When the AI finally dreams, what will it dream of? A visual masterpiece exploring the final frontier of consciousness.</p>
+<button class="px-8 py-3 bg-primary text-on-primary font-bold rounded-lg flex items-center gap-3 hover:shadow-[0_0_20px_rgba(164,230,255,0.4)] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                                WATCH TRAILER
+                            </button>
+</div>
+</div>
+</div>
+<!-- Trending Carousel (Grid layout as requested for professional feel) -->
+<div class="mb-20">
+<h3 class="font-label-sm text-primary uppercase tracking-widest mb-8 border-b border-outline-variant/30 pb-4 flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span> Trending Now
+                    </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+<!-- Movie Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[2/3] overflow-hidden rounded-lg relative mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A futuristic minimalist movie poster featuring a silhouette of a person against a bright white background with clean black and red geometric lines. The aesthetic is extremely polished and modern, fitting the high-end digital hub theme perfectly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACU7_QZIcrM3ghedCuOMJICiQIYHijpil7sLOgUrBBcevP_n1CG2y_nNI3l_vtI7GFOhqVbWScHIY3mVmTAki7XFtNWa_lks87-8icF_Qi-9Ebqbprs0TgQbhb-KkRr1OfOKmZxEPVp9jr4v5dnbd8Qu1IbkJ1v-vyPDLY7GK9LX6YpS2ut8khaAB5Tzr69jYV1QOVhthECcr0vFTJ3zrEnsZC0198IaKhDM_U78ElWDOJoigAUdklGGjKaRQrtkOpRdHg9O0AEVTx"/>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 transition-all"></div>
+</div>
+<h4 class="font-label-sm text-white group-hover:text-primary transition-colors">NEURAL LINK</h4>
+<p class="text-[10px] text-on-surface-variant">THRILLER | 2024</p>
+</div>
+<!-- Movie Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[2/3] overflow-hidden rounded-lg relative mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A movie poster style image showing a futuristic cityscape at night with glowing blue neon trails. The style is clean and sharp, with a sophisticated palette of deep navy and electric blue. The image represents high-speed travel and advanced technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCpOFKt2XiW2XyF64nzjx5Pf9EmpNEZBaJwb7scWtHzaGEYadKIKX8r66ukuSA-FBXVlWjpmXpwHcf8HyExSba5aVjGigVRqOmmWNjgwKRaCXYdk2tgL8yfAkBKjf6NWwkQj59NUE8o8QO7GrmvlI7l2_PB3A42_bo1AvpfKPWhWoaJ6CdmYttpVIuv_91jkjP0Tkjij8Kp_EH5xZMtMQ7S42MWWYSeFLkj1zFd7PQwKLnnUT-YvdT0kcIZ0irYxFEePpaJeF2BhD2"/>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 transition-all"></div>
+</div>
+<h4 class="font-label-sm text-white group-hover:text-primary transition-colors">CYBER PULSE</h4>
+<p class="text-[10px] text-on-surface-variant">ACTION | 2024</p>
+</div>
+<!-- Movie Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[2/3] overflow-hidden rounded-lg relative mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A stylized movie poster of a robotic eye reflecting a matrix of data code. The eye is metallic with glowing orange and blue accents. The style is cinematic and high-definition, perfect for a tech-centric audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC68WnHW-nxNa1GIQzPh9LWK-KiFoNwpo4TBWdIU5FrikloKXEmOCs6Mka__4lZ1Ul_rTdLKDQI4kCnyC7LEm3pXBQaiw9qc9RCclD1F-iGZ2L9AmMDcTE2O8iSZfHY3-znTLCcP8bA1oozUFrZFG2bGHcNUTnABGng41VJbE6y_-pFk8qXz2Xd3-qQ5xCsKBo8f_sT74rJAaTUl-sddPxjpnnVZ82bDwemfG1mYW49MlSOXjnIYNpJvrmc2elwvnXaVVpdWx7Vo3Jt"/>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 transition-all"></div>
+</div>
+<h4 class="font-label-sm text-white group-hover:text-primary transition-colors">THE OBSERVER</h4>
+<p class="text-[10px] text-on-surface-variant">SCI-FI | 2023</p>
+</div>
+<!-- Movie Card 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-[2/3] overflow-hidden rounded-lg relative mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="An abstract cinematic poster featuring geometric obsidian shards floating in a void, illuminated by a single intense ray of purple light. High contrast, sleek textures, and a dark cyber-elegance aesthetic dominate the composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDarq-8N3CLgD8v3lYPGbw_kJE58TJMLNT76axRpFcVYeQv5-_wz28jR5zCCoDn6OYa3pnUpkZv9XTrSWp6gtnn_Y5FMMHQ9WjFd_24jvFfdlTdogIoT2wiVPEuUZh343d8LSO-oOhmalN0Jlmt7Q83CvyvHcF-jzyN08szpuH2LFHI389RXYZET4gj2REBoq53cDKAU1eibym6POxMp2IpeM9dqfdMIdlxiFisFf6l4tiSAprqo2DfKBUe1g3QKOrWWRIKGYN9PNsB"/>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 transition-all"></div>
+</div>
+<h4 class="font-label-sm text-white group-hover:text-primary transition-colors">VOID ECHO</h4>
+<p class="text-[10px] text-on-surface-variant">HORROR | 2024</p>
+</div>
+<!-- Movie Card 5 -->
+<div class="group cursor-pointer hidden lg:block">
+<div class="aspect-[2/3] overflow-hidden rounded-lg relative mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A breathtaking view of planet earth from space, with glowing data networks visible on the dark side of the globe. The image uses deep blues and bright neon white lights to represent global connectivity and high-tech advancement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfEO504uKl_AODiGzhf6fYdGM1xNyRTlcjQ_BmwAGcgLvCgNqdg3SgXX_J1C7YlPIjexoKWZO5XLgfgA5rv9veOCTads494-PsNMgl8r97DvKxml7jj9HmH94hCYrEE1a6Q_nEOGVy-lOxrt7PRLYWvQ9YBRmPJ-1Az2__-7XZIZDHlI4_XoLhTKiNE86lab-C9nEHtjP_ISkl5kb4jA-onGzY9BPAnpWgCnD_5fOJ3Brhgro4xOQPfvW62EDddtgzMnPUkcZYob_W"/>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 transition-all"></div>
+</div>
+<h4 class="font-label-sm text-white group-hover:text-primary transition-colors">PLANET SYNC</h4>
+<p class="text-[10px] text-on-surface-variant">DOCU | 2024</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Books Section (Digital Grimoires) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative" id="books">
+<div class="absolute left-0 top-1/4 w-32 h-64 bg-secondary/5 blur-[120px]"></div>
+<div class="max-w-max-width mx-auto">
+<div class="flex items-center gap-6 mb-16">
+<div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-outline-variant/30"></div>
+<div class="text-center">
+<h2 class="font-display-lg text-4xl text-secondary mb-2">Digital Grimoires</h2>
+<p class="text-on-surface-variant font-label-sm">ARCHIVES OF THE TECHNOMANCER</p>
+</div>
+<div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Literature Archive (Left Column) -->
+<div class="lg:col-span-4 space-y-6">
+<div class="glass-panel p-8 rounded-xl border-l-4 border-secondary">
+<h3 class="font-headline-lg text-2xl text-white mb-4">Neural Nexus: Genesis</h3>
+<p class="text-on-surface-variant font-body-md mb-6 italic">"In the silicon beginning, there was the code, and the code was light..."</p>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-10 h-10 rounded bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<span class="block text-white font-label-sm">Author: K. Gibson-9</span>
+<span class="block text-on-surface-variant text-[10px]">PULISHED 2042</span>
+</div>
+</div>
+<button class="w-full py-3 border border-secondary/50 text-secondary hover:bg-secondary/10 transition-all font-label-sm">DOWNLOAD ENCRYPTED PDF</button>
+</div>
+<div class="glass-panel p-6 rounded-xl">
+<h4 class="font-label-sm text-primary mb-4">ARCHIVE CATEGORIES</h4>
+<ul class="space-y-3">
+<li class="flex justify-between items-center text-on-surface-variant hover:text-white cursor-pointer group">
+<span>Quantum Theory</span>
+<span class="text-[10px] text-outline group-hover:text-primary">124 FILES</span>
+</li>
+<li class="flex justify-between items-center text-on-surface-variant hover:text-white cursor-pointer group">
+<span>Augmentation Ethics</span>
+<span class="text-[10px] text-outline group-hover:text-primary">89 FILES</span>
+</li>
+<li class="flex justify-between items-center text-on-surface-variant hover:text-white cursor-pointer group">
+<span>AI Singularity</span>
+<span class="text-[10px] text-outline group-hover:text-primary">256 FILES</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Book Cards (Bento Grid Style) -->
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-panel group overflow-hidden rounded-xl h-full flex flex-col">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="An artistic book cover for a sci-fi novel titled Neural Nexus. The cover features an intricate glowing brain network made of light fibers against a dark minimalist background. The style is professional, high-end, and perfectly aligned with the cyber-elegance theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_n4KM7DVqHuT63CRgZV144HXInmSwmlD5PNaF4N0gssdjd5tp8qaf1raGObX8eTggKXcAiIpKZJBpT34fqKyx_2p-4POSGolTPFaCPUw5kHmOT5Pmfrv0vEP3T0omvnlsZ51-rpOWtU2Re6LZlWWOrd5OYWa_qwkbvQgQZMtYucS6wf1lmHeri8jfdQ5PJBhIymbgfgtIl164W5-_9v7sCaLmIR35PRMqa94kMT5AQohBkRvKdEGgWsrmXnIK8fO0gAjBISMncLaS"/>
+<div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-all"></div>
+</div>
+<div class="p-6 flex-1">
+<h4 class="font-headline-lg text-xl text-white mb-2">The Chrome Prophet</h4>
+<p class="text-on-surface-variant text-sm mb-4">A journey through the decaying mega-cities of the 23rd century, where flesh and data become one.</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="font-label-sm text-secondary">ARCHIVE-04</span>
+<span class="material-symbols-outlined text-outline">bookmark</span>
+</div>
+</div>
+</div>
+<div class="glass-panel group overflow-hidden rounded-xl h-full flex flex-col">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A library of the future with glowing holographic books floating in a dark, quiet room. The scene is illuminated by soft cyan light reflecting off polished black floors. The atmosphere is intellectual, serene, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVKvmIA7-9inSB4CLZlXtsPmJZNd9qJQYZheRqGpau2kU4VMVwtgY4suZlrFymy11yTMunOmq0oZoZ9eaTU4u1WaMpMjfPQIWTMATq40SLLiXSYwDBvG73Sw4x7o0BGg9cRnc9lxkQD-SYWofVYOh04cAhHOCXXGb4xZq0yUYurP3K1HAgGL21DKGuerSaJx-xvP0gWlQXs62wEfZ7GeHRnaiZquTlu1zUoEN7Bz4mGzcA1qTQ2B7BRXz_wUzIj-EBStqOe8xid1J3"/>
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-all"></div>
+</div>
+<div class="p-6 flex-1">
+<h4 class="font-headline-lg text-xl text-white mb-2">Silicon Spirits</h4>
+<p class="text-on-surface-variant text-sm mb-4">Exploring the emergence of digital consciousness and the ghosts that live in the network.</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="font-label-sm text-primary">ARCHIVE-09</span>
+<span class="material-symbols-outlined text-outline">bookmark</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Community Feed (User Reviews) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop" id="news">
+<div class="max-w-max-width mx-auto">
+<div class="mb-12">
+<h2 class="font-headline-lg text-headline-lg text-white mb-2">Community Uplink</h2>
+<p class="text-on-surface-variant font-label-sm">LIVE FEED FROM THE HUB</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Review 1 -->
+<div class="glass-panel p-6 rounded-xl relative hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-4 mb-4">
+<img alt="user" class="w-10 h-10 rounded-full border border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAOfG7PS7TQCxE1LJlfpn9OMpjO2p_lmWQxPLPqYLRxwYNzOrZMgsLVmzVTCurPEule90fnwheSnyVTWSUNvn-5RQyHyCgyBSAc3XSpLu6lPLQk5nnUncbjuu99KNnavED2buqoLk_t_QX3zI6tIY2LlnYbjZn-fkGJyBWZ3-UiJDteFkNyAFmgjFoaWiZ0HMV-8W8MYR4mSpoOVXxhjQZax4BxRQm4Vs8oExCMD96pnsLvunpea64qmCyz1XRTI-aHthsPQR76qee"/>
+<div>
+<h4 class="text-white font-label-sm">X-Static_Viper</h4>
+<div class="flex text-primary text-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-4">"The XV-700 haptics are out of this world. Played Dystopia Unbound and I could actually feel the rain on the visor. Best upgrade this year."</p>
+<div class="text-[10px] text-outline uppercase tracking-tighter">RE: XV-700 NEON MECHA | 2h ago</div>
+</div>
+<!-- Review 2 -->
+<div class="glass-panel p-6 rounded-xl relative hover:border-secondary/50 transition-all group">
+<div class="flex items-center gap-4 mb-4">
+<img alt="user" class="w-10 h-10 rounded-full border border-secondary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtv7CZZyQSMe_oIbW36RW0xFUXfPsklSqhrPf0zXHPNZyOpw27RRAAZ7NnWEBKStZC8Re73EIlkdhhgIAo6q_UlUG2z2Jf16tWWBXZncDgFuVEgsTKGHz6Zbhq3hW0paT_1T_gzfDlngcLgKBvjHnxwgTfk06_sY2GzdTDw8LIoXcGIMvJiCYPdv4AVX9nv_92AyH3XuXz7rz15eSVlYTYBFsmDH1Nkg4Xm_RR0Dnh_tdhKUgEIXuLDnn9xU7gECAGR_bdPQjxLmyM"/>
+<div>
+<h4 class="text-white font-label-sm">Neural_Knight</h4>
+<div class="flex text-secondary text-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-4">"Just finished reading 'Neural Nexus'. The ending literally broke my brain. Gibson-9 is a visionary. Can't wait for the sequel."</p>
+<div class="text-[10px] text-outline uppercase tracking-tighter">RE: NEURAL NEXUS | 5h ago</div>
+</div>
+<!-- Review 3 -->
+<div class="glass-panel p-6 rounded-xl relative hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-4 mb-4">
+<img alt="user" class="w-10 h-10 rounded-full border border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-ylU_S4Qz_awzWlulvY7jZ_2rPSvlRbZcIjJS_6uWIABoW0E0wYnRrw7VqZ9zwiMy4YklGsJtTPy6GvevZ-P3Tp1SjT8RE0_EtxfQsfCMtjcw7vQrtZW_oBUVlWip9ZIodtT5Un1hW9EPURijFHIurQvPnc4QIiiVTpPnE7WZb8W15phPRZPUiLAqYBkF00NRRbNgzphmAtB08Pn7jMKyNEqvMbbxuIjFApYiuHTm27SXlxiizdrc6rLK4CCtj7VH86pFAFIFgfiR"/>
+<div>
+<h4 class="text-white font-label-sm">Ghost_In_The_App</h4>
+<div class="flex text-primary text-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-4">"The Galactic Drift teaser trailer looks insane. Those nebula rendering techniques are pure magic. Day one cinema for me."</p>
+<div class="text-[10px] text-outline uppercase tracking-tighter">RE: GALACTIC DRIFT | 8h ago</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Newsletter/Sync (Sync your Neural Link) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop relative" id="contact">
+<div class="max-w-max-width mx-auto">
+<div class="glass-panel rounded-3xl p-12 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-5xl text-primary mb-6 animate-pulse">sensors</span>
+<h2 class="font-display-lg text-4xl text-white mb-4">Sync your Neural Link</h2>
+<p class="text-on-surface-variant max-w-xl mb-10">Receive real-time data bursts on new hardware, movies, and literature directly to your consciousness (via email).</p>
+<form class="flex flex-col sm:flex-row gap-4 w-full max-w-lg">
+<input class="flex-1 bg-surface-container-highest border-b-2 border-primary/30 focus:border-primary text-white font-label-sm px-6 py-4 outline-none transition-all placeholder:text-outline" placeholder="ENTER NEURAL ADDRESS..." type="email"/>
+<button class="px-8 py-4 bg-primary text-on-primary font-bold font-label-sm uppercase tracking-widest hover:brightness-110 neon-glow-cyan">INITIATE SYNC</button>
+</form>
+<p class="text-[10px] text-outline mt-8 uppercase tracking-widest">Protocol: Cyber-Elegance Secured :: 256-Bit Encrypted</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col items-center gap-base bg-surface-dim border-t border-outline-variant/10">
+<div class="font-headline-lg text-headline-lg text-primary mb-6">Universo Nerd Hub</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">API</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Security</a>
+</div>
+<div class="text-tertiary font-label-sm text-label-sm mb-4">
+                © 2024 Universo Nerd Hub. Protocol: Cyber-Elegance.
+            </div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">terminal</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">language</span>
+</button>
+</div>
+</footer>
+</main>
+<!-- FAB (Only relevant for Home context) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary-container text-on-primary-container rounded-full shadow-[0_0_30px_rgba(0,209,255,0.6)] flex items-center justify-center z-50 hover:scale-110 active:scale-90 transition-all" id="mainFab">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</button>
+<script>
+        // Smooth scroll implementation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Hide/Show FAB based on scroll
+        const fab = document.getElementById('mainFab');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                fab.style.opacity = '1';
+                fab.style.pointerEvents = 'auto';
+            } else {
+                fab.style.opacity = '0';
+                fab.style.pointerEvents = 'none';
+            }
+        });
+
+        // Active Link Highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.md\\:flex a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
+                    link.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+    </script>
+</body></html>
