@@ -1,0 +1,1 @@
+Aviso: Este site foi desenvolvido exclusivamente para fins de aprendizado e estudo. Todo o processo de criação contou com o auxílio de Inteligência Artificial, sendo utilizado como ferramenta de apoio no desenvolvimento do layout, código e design. Nenhum conteúdo apresentado representa um serviço ou produto real.
